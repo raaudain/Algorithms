@@ -41,9 +41,15 @@
 import math
 
 def recipe_batches(recipe, ingredients):
+
+  max_batches = float("inf")
+  for k,v in recipe.items():
+    if k not in ingredients:
+      return 0
+    if max_batches > ingredients[k] // v:
+      max_batches = ingredients[k] // v
   
-  #pass
-   
+  return max_batches
 
 
 if __name__ == '__main__':

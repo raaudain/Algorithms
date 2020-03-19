@@ -14,51 +14,44 @@
 import argparse
 
 def find_max_profit(prices):
-  #pass
-  # paid = 0
-  # sold = 0
   
-  # profit = sold - paid
-  
-  # def paid_price(prices):
-  #   for i in range(0, len(prices)-1):
-  #     current_min_price_so_far = i
-  #     lowest_price = current_min_price_so_far
-      
-  #     for j in range(current_min_price_so_far+1, len(prices)):
-  #       if prices[j] < prices[lowest_price]:
-  #         lowest_price = j
-          
-  #     if current_min_price_so_far != lowest_price:
-  #       temp = prices[lowest_price]
-  #       prices[lowest_price] = prices[current_min_price_so_far]
-  #       prices[current_min_price_so_far]: temp
-  #     else:
-  #       paid = prices[current_min_price_so_far]
+    # profits = []
     
-  #   return paid_price
+    # for i in range(0, len(prices)-1):
+    #   buy = i
+    #   for j in range(i+1, len(prices)):
+    #     current_sell = prices[j]
+    #     current_buy = prices[buy]
+    #     profit = current_sell - current_buy
+    #     profits.append(profit)
+    # return max(profits)
+    #print(find_max_profit(stock_prices)
   
-  # def sold_price(prices):
-  #   for i in range(0, len(prices)-1):
-  #     current_max_price_so_far = i
-  #     highest_price = current_max_price_so_far
-
-  #     for j in range(current_max_price_so_far+1, len(prices)):
-  #       if prices[j] > prices[highest_price]:
-  #         highest_price = j
-          
-  #     if current_max_price_so_far != highest_price:
-  #       temp = prices[highest_price]
-  #       prices[highest_price] = prices[current_max_price_so_far]
-  #       prices[current_max_price_so_far]: temp
-  #     else:
-  #       sold = prices[current_max_price_so_far]
+  # min_price = prices[0]
+  # max_profit = prices[1] - min_price
   
-  #   return sold_price
+  # for i in range(len(prices)):
+  #   price = prices[i]
+  #   max_profit = max(price - min_price, max_profit)
+  #   min_price = min(price, min_price)
+    
+  # return max_profit
   
+  profit = prices[1] - prices[0]
   
-  
-  return find_max_profit(profit)
+  # For i in prices array after index 1
+  for i in prices[1:]:
+    # If i minus the first element in prices is larger than profit
+    if (i - prices[0]) > profit:
+      # profit becomes i minus the first element in prices
+      profit = i - prices[0]
+    # If i is less that the first element in prices
+    if i < prices[0]:
+      # The first element of prices becomes i
+      prices[0] = i
+        
+  return profit
+ 
 
 if __name__ == '__main__':
   # This is just some code to accept inputs from the command line
@@ -69,4 +62,4 @@ if __name__ == '__main__':
   print("A profit of ${profit} can be made from the stock prices {prices}.".format(profit=find_max_profit(args.integers), prices=args.integers))
   
   
-#print(find_max_profit([10, 7, 5, 8, 11, 9]), 6)
+# print(find_max_profit([10, 7, 5, 8, 11, 9]), 6)
